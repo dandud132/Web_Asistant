@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>app</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .top-bar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .auth-container {
+            display: flex;
+            gap: 15px;
+            margin-right: 20px;
+        }
+        .button {
+            padding: 10px 15px;
+            cursor: pointer;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        .profile-container {
+            position: relative;
+        }
+        .profile-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: url('https://via.placeholder.com/40') no-repeat center/cover;
+            border: 2px solid #007bff;
+            cursor: pointer;
+        }
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            top: 45px;
+            right: 0;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            width: 150px;
+        }
+        .profile-dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        .profile-dropdown a:hover {
+            background: #f1f1f1;
+        }
+        .main-content {
+            text-align: center;
+        }
+        .upload-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #28a745;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Верхняя панель -->
+    <div class="top-bar">
+        <div class="auth-container">
+            <button class="button">Авторизация</button>
+            <button class="button">Регистрация</button>
+        </div>
+        <div class="profile-container">
+            <button class="profile-btn" id="profile-btn"></button>
+            <div class="profile-dropdown" id="profile-menu">
+                <a href="#">Мой аккаунт</a>
+                <a href="#">Настройки</a>
+                <a href="#">Выйти</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="main-content">
+        <h1>Виртуальный помощник</h1>
+        <input type="file" id="file-upload" style="display: none;">
+        <button class="upload-btn" onclick="document.getElementById('file-upload').click();">
+            Загрузить изображение
+        </button>
+    </div>
+
+    <script>
+        document.getElementById("profile-btn").addEventListener("click", function() {
+            var menu = document.getElementById("profile-menu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        });
+
+        document.addEventListener("click", function(event) {
+            var profileBtn = document.getElementById("profile-btn");
+            var menu = document.getElementById("profile-menu");
+            if (!profileBtn.contains(event.target) && !menu.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
+
+</body>
+</html>
