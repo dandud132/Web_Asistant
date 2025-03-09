@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>app</title>
+    <title>Виртуальный помощник</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -87,8 +87,8 @@
     <!-- Верхняя панель -->
     <div class="top-bar">
         <div class="auth-container">
-            <button class="button">Авторизация</button>
-            <button class="button">Регистрация</button>
+            <button onclick="window.location.href='/login'" class="button">Авторизация</button>
+            <button onclick="window.location.href='/register'" class="button">Регистрация</button>
         </div>
         <div class="profile-container">
             <button class="profile-btn" id="profile-btn"></button>
@@ -103,10 +103,12 @@
     <!-- Основной контент -->
     <div class="main-content">
         <h1>Виртуальный помощник</h1>
-        <input type="file" id="file-upload" style="display: none;">
-        <button class="upload-btn" onclick="document.getElementById('file-upload').click();">
-            Загрузить изображение
-        </button>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" id="file-upload" name="file" style="display: none;">
+            <button type="button" class="upload-btn" onclick="document.getElementById('file-upload').click();">
+                Загрузить изображение
+            </button>
+        </form>
     </div>
 
     <script>
