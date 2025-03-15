@@ -103,11 +103,14 @@
     <!-- Основной контент -->
     <div class="main-content">
         <h1>Виртуальный помощник</h1>
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" id="file-upload" name="file" style="display: none;">
-            <button type="button" class="upload-btn" onclick="document.getElementById('file-upload').click();">
-                Загрузить изображение
-            </button>
+        <form
+      action="http://localhost:5000/upload"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="file" />
+      <input type="submit" />
+
         </form>
     </div>
 
