@@ -64,7 +64,7 @@ def recognize_color(image_path):
 
 
 # Пример использования
-image_path = "67.png"  # Замените на путь к вашему изображению
+image_path = ""  # Замените на путь к вашему изображению
 color = recognize_color(image_path)
 
 if color:

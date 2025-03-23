@@ -1,9 +1,13 @@
+import webbrowser
 from ultralytics import YOLO
 import cv2
 import numpy as np
 import os
+import color_lib
+from main import detected_folder  # Импортируем переменную с путем к папке
 
-from test import detected_folder  # Импортируем переменную с путем к папке
+clr = ''
+obj = ''
 
 # Убедимся, что папка для сохранения существует
 os.makedirs(detected_folder, exist_ok=True)
@@ -18,6 +22,7 @@ colors = [
     (0, 128, 0), (128, 0, 128), (0, 128, 128), (0, 0, 128), (72, 61, 139),
     (47, 79, 79), (47, 79, 47), (0, 206, 209), (148, 0, 211), (255, 20, 147)
 ]
+
 
 # Функция для обработки изображения
 def process_image(image_path):
@@ -59,8 +64,15 @@ def process_image(image_path):
     # Сохранение данных в текстовый файл
     with open(text_file_path, 'w') as f:
         for class_name, details in grouped_objects.items():
+            global obj
+            obj = class_name
             f.write(f"{class_name}:\n")
+            img = f'{new_image_path}'
+            global clr
+            clr = f'{color_lib.color_name(img)}'
+            f.write(clr)
 
     print(f"Processed {image_path}:")
     print(f"Saved bounding-box image to {new_image_path}")
     print(f"Saved data to {text_file_path}")
+    # webbrowser.open(f'https://yandex.ru/images/search?from=tabbar&text={clr} {obj}')
